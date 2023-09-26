@@ -1550,3 +1550,8 @@ section {
   font-size: 13px;
   color: #fff;
 }
+
+#language-switch {
+  margin-left: auto;
+  margin-right: 20px; /* Dostosuj tę wartość do uzyskania odpowiedniego odstępu */
+}
