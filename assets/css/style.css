@@ -1552,6 +1552,6 @@ section {
 }
 
 #language-switch {
-  margin-left: auto;
-  margin-right: 20px; /* Dostosuj tę wartość do uzyskania odpowiedniego odstępu */
+  margin-left: auto; /* Przyciągnie element "Pl" do prawej strony */
+  margin-right: 20px; /* Dodaje odstęp od menu */
 }
