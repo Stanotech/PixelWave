@@ -1,3 +1,3 @@
-# PixelWave
+# Pixelum
 
 www.pixelum.pl
