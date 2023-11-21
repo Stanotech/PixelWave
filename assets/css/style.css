@@ -624,6 +624,49 @@ section {
 }
 
 /*--------------------------------------------------------------
+# Portfolio slider
+--------------------------------------------------------------*/
+
+#portfolio-slider .swiper-wrapper {
+  height: 36vw;
+}
+
+@media (min-width: 576px) {
+    #portfolio-slider .swiper-wrapper {
+        height: 17vw;
+    }
+}
+
+@media (min-width: 768px) {
+    #portfolio-slider .swiper-wrapper {
+        height: 24vw;
+    }
+}
+
+@media (min-width: 992px) {
+    #portfolio-slider .swiper-wrapper {
+        height: 18vw;
+    }
+}
+
+@media (min-width: 1200px) {
+    #portfolio-slider .swiper-wrapper {
+        height: 300px;
+    }
+}
+
+#portfolio-slider .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+#portfolio-slider .portfolio-wrap {
+  height: 100%;
+}
+
+/*--------------------------------------------------------------
 # Features
 --------------------------------------------------------------*/
 .features {
