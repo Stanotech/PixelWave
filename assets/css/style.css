@@ -596,6 +596,11 @@ section {
   transition: 0.3s;
 }
 
+.clients .swiper-slide2 img:hover {
+  filter: none;
+  opacity: 1;
+}
+
 .clients .swiper-slide img:hover {
   filter: none;
   opacity: 1;
