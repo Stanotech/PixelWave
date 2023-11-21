@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
   <!-- Google Tag Manager -->
 
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  {% comment %} <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-KZFP6MTG');</script>
-  
+  })(window,document,'script','dataLayer','GTM-WJCMRWBD');</script> {% endcomment %}
+
   <!-- End Google Tag Manager -->
 
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
@@ -17,16 +17,15 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Pixelum</title>
-  <meta content="" name="Studio fotografii cyfrowej i grafiki 3d.">
-  <meta content="" name="keywords">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline';">
+  <title>Pixelum- Studio grafiki produktowej</title>
+  <meta name="description" content="Studio w Poznaniu zajmujące się fotografią i grafiką 3D w tworzeniu grafiki produktowej. Tel. +48 604216600 ul Dąbrowskiego 89">
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline';"> -->
 
   <!-- Ikony ulubionych -->
   
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+  
   <!-- Czcionki Google -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -41,36 +40,14 @@
 
   <!-- Główny plik CSS szablonu -->
   <link href="assets/css/style.css" rel="stylesheet">
-
-  <script>
-    // Funkcja do sprawdzania języka przeglądarki i przekierowania
-    function redirectBasedOnLanguage() {
-      // Pobierz preferowany język przeglądarki
-      var userLang = navigator.language || navigator.userLanguage;
-
-      // Sprawdź preferowany język
-      if (userLang.startsWith('pl')) {
-        // Jeśli preferowany język to polski, nie rób nic - pozostaw na stronie w języku polskim
-      } else {
-        // W przeciwnym razie przekieruj na stronę w języku angielskim
-        window.location.href = 'index_eng.html';
-      }
-    }
-
-    // Wywołaj funkcję po załadowaniu strony
-    window.onload = function () {
-      redirectBasedOnLanguage();
-    };
-  </script>
-
-
 </head>
 
 <body>
-  <!-- Google Tag Manager (noscript) -->
   
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZFP6MTG"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- Google Tag Manager (noscript) -->
+
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJCMRWBD"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- End Google Tag Manager (noscript) -->
 
@@ -183,18 +160,6 @@ Witaj w świecie kreatywności oraz inspiracji.
       </div>
     </section>
     
-    <!-- Dodaj inicjalizację Swipera -->
-    <script>
-      var swiper = new Swiper('.clients-slider', {
-        slidesPerView: 'auto',
-        spaceBetween: 10,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-      });
-    </script>
-    
     
     <!-- Koniec sekcji Klienci -->
     <!-- ======= Sekcja Funkcje ======= -->
@@ -303,6 +268,23 @@ Witaj w świecie kreatywności oraz inspiracji.
           </div>
         </div>
 
+        <section id="clients" class="clients">
+          <div class="container" data-aos="zoom-in">
+            <div class="clients-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+                <div class="swiper-slide2"><img src="assets/img/portfolio/1.jpg" class="img-fluid" alt=""></div>
+                <div class="swiper-slide2"><img src="assets/img/portfolio/2.jpg" class="img-fluid" alt=""></div>
+                <div class="swiper-slide"><img src="assets/img/portfolio/3.jpg" class="img-fluid" alt=""></div>
+                <div class="swiper-slide"><img src="assets/img/portfolio/4.jpg" class="img-fluid" alt=""></div>
+                <div class="swiper-slide2"><img src="assets/img/portfolio/5.jpg" class="img-fluid" alt=""></div>
+                <div class="swiper-slide2"><img src="assets/img/portfolio/6.jpg" class="img-fluid" alt=""></div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </section>
+
+
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-Aranżacja">
@@ -391,10 +373,8 @@ Witaj w świecie kreatywności oraz inspiracji.
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-Detale">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/8.jpg" class="img-fluid" alt="">
-             
-
- <div class="portfolio-info">
+              <img src="assets/img/portfolio/8.jpg" class="img-fluid" alt=""> 
+              <div class="portfolio-info">
                 <div class="portfolio-links">
                   <a href="assets/img/portfolio/8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 1"><i class="bx bx-plus"></i></a>
                   <a href="portfolio-details.html" title="Więcej szczegółów"><i class="bx bx-link"></i></a>
@@ -545,7 +525,7 @@ Witaj w świecie kreatywności oraz inspiracji.
                 </div>
               </div>
               <div class="member-info">
-                <h4>Artur Włodarkiewicz</h4>
+                <h4>Krzysztof Kaczmarek</h4>
                 <span>Business Unit Manager</span>
               </div>
             </div>
@@ -563,7 +543,7 @@ Witaj w świecie kreatywności oraz inspiracji.
                 </div>
               </div>
               <div class="member-info">
-                <h4>Kamila Neumann</h4>
+                <h4>Anna Zielińska</h4>
                 <span>Media Specialist</span>
               </div>
             </div>
@@ -663,16 +643,19 @@ Witaj w świecie kreatywności oraz inspiracji.
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 
