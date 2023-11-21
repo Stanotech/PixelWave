@@ -164,7 +164,7 @@
       preloader.remove()
     });
   }
-
+  
   /**
    * Clients Slider
    */
@@ -197,6 +197,42 @@
       992: {
         slidesPerView: 6,
         spaceBetween: 120
+      }
+    }
+  });
+  
+  /**
+   * Portfolio Slider
+   */
+  new Swiper('.portfolio-slider', {
+    speed: 400,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
+    slidesPerView: 'auto',
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 2,
+        spaceBetween: 10
+      },
+      480: {
+        slidesPerView: 3,
+        spaceBetween: 20
+      },
+      640: {
+        slidesPerView: 3,
+        spaceBetween: 20
+      },
+      992: {
+        slidesPerView: 3,
+        spaceBetween: 40
       }
     }
   });
