@@ -1608,3 +1608,16 @@ section {
   margin-left: auto; /* Przyciągnie element "Pl" do prawej strony */
   margin-right: 20px; /* Dodaje odstęp od menu */
 }
+
+.centerr {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 0;
+  line-height: 1px;
+  margin: 0 0 0 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #151515;
+  font-family: "Poppins", sans-serif;
+}
