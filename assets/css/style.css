@@ -655,11 +655,17 @@ section {
     }
 }
 
+#portfolio-slider .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #portfolio-slider .swiper-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  max-width: 150%;
+  max-height: 100%;
+
+  height: auto;
 }
 
 #portfolio-slider .portfolio-wrap {
