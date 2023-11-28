@@ -2,7 +2,9 @@ RewriteEngine On
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-Header set Content-Security-Policy "default-src 'self' https://www.google.com https://fonts.googleapis.com https://fonts.gstatic.com data: blob:; script-src 'self' 'unsafe-inline' blob:; style-src 'self' https://fonts.googleapis.com 'bdcc65f094ddd190bd0b26b286aa9643739129099c538192e41f206f56470024' 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:;"
+Header set Content-Security-Policy "default-src 'self' https://www.google.com https://fonts.googleapis.com https://fonts.gstatic.com data: blob:; script-src 'self' 'unsafe-inline' blob:; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:;"
+
+
 
 Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 

@@ -1627,3 +1627,8 @@ section {
   color: #151515;
   font-family: "Poppins", sans-serif;
 }
+
+.noscript-container {
+  display: none;
+  visibility: hidden;
+}
