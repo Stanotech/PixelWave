@@ -954,7 +954,7 @@ Witaj w świecie kreatywności oraz inspiracji.
             var sectionHeight = section.clientHeight;
             
             // Calculate the scroll position to center the section
-            var scrollPosition = section.offsetTop + 2*sectionHeight;
+            var scrollPosition = section.offsetTop + sectionHeight + windowHeight/2;
             
             // Use scrollIntoView with behavior: 'smooth'
             window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
