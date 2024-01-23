@@ -175,7 +175,7 @@
         </div>
 
         <section id="portfolio-slider" class="portfolio">
-          <div data-aos="zoom-in">
+          <div data-aos="zoom-in" id="aranże">
             <div class="portfolio-slider swiper">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -288,7 +288,7 @@
         </div>
 
         <section id="portfolio-slider" class="portfolio">
-          <div data-aos="zoom-in">
+          <div data-aos="zoom-in" id="produkty">
             <div class="portfolio-slider swiper">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -402,7 +402,7 @@
         </div>
 
         <section id="portfolio-slider" class="portfolio">
-          <div data-aos="zoom-in">
+          <div data-aos="zoom-in" id="homestage">
             <div class="portfolio-slider swiper">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -465,7 +465,7 @@
         </div>
 
         <section id="portfolio-slider" class="portfolio">
-          <div data-aos="zoom-in">
+          <div data-aos="zoom-in" id="detale">
             <div class="portfolio-slider swiper">
               <div class="swiper-wrapper">
 
@@ -943,6 +943,27 @@ Witaj w świecie kreatywności oraz inspiracji.
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    // Funkcja do przewinięcia diva na środek ekranu na podstawie ID z URL
+    function scrollToMiddleOfSection() {
+        var hash = window.location.hash.substr(1); // Pobierz wartość hasha z URL
+        var section = document.getElementById(hash);
+        if (section) {
+            var windowHeight = window.innerHeight;
+            var sectionHeight = section.clientHeight;
+            
+            // Calculate the scroll position to center the section
+            var scrollPosition = section.offsetTop + 2*sectionHeight;
+            
+            // Use scrollIntoView with behavior: 'smooth'
+            window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+        }
+    }
+
+    // Wywołaj funkcję przy ładowaniu strony
+    window.onload = scrollToMiddleOfSection;
+  </script>
 
 </body>
 
