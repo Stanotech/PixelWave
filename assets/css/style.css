@@ -1644,24 +1644,33 @@ section {
   position: relative;
   display: block; /* Zmieniamy na blokowy element */  
   height: 400px; /* Lub ustawienie wysokości według potrzeb */
-  width: auto; /* Ustawienie szerokości na auto, aby dostosować się do zawartości */
-  margin: 0 auto 
+  width: 300px; /* Ustawienie szerokości na auto, aby dostosować się do zawartości */
+  margin: 0 auto;
+}
+
+.image-container2{
+  position: relative;
+  display: block; /* Zmieniamy na blokowy element */  
+  height: 400px; /* Lub ustawienie wysokości według potrzeb */
+  width: 100px; /* Ustawienie szerokości na auto, aby dostosować się do zawartości */
+  margin: 0 auto;
 }
 
 .before-image,
 .after-image {
   position: absolute;
-  top: 0;
-  width: auto;
+  width: 300px;
   height: 100%;
 }
 
-.before-image {
-  background-image: url("przed_obróbka.jpg");
+.before-image2,
+.after-image2 {
+  position: absolute;
+  width: 200px;
+  height: 100%;
 }
 
 .after-image {
-  background-image: url("po_obróbce.jpg");
   clip-path: inset(0 50% 0 0); /* Początkowe położenie kreski na środku szerokości */
   transition: clip-path 0.3s ease;
 }
