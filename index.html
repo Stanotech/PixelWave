@@ -453,7 +453,14 @@
         </section>
 
       </div>
+      
+      
     </section><!-- Koniec sekcji Portfolio -->
+
+    <div class="image-container" id="imageContainer">
+      <img img src="assets/img/portfolio/przedpo/Zegarek1.jpg" id="imageContainer"alt="Przed obróbką" class="before-image">
+      <img img src="assets/img/portfolio/przedpo/Zegarek2.jpg" alt="Po obróbce" class="after-image">
+    </div>
 
     <!-- ======= Sekcja O nas ======= -->
     <section id="about" class="about">
@@ -540,6 +547,7 @@ Witaj w świecie kreatywności oraz inspiracji.
       </div>
     </section><!-- Koniec sekcji Funkcje -->
 
+
         <!-- ======= Sekcja Usługi ======= -->
     <section id="services" class="services">
       <div class="container" data-aos="fade-up">
@@ -594,11 +602,6 @@ Witaj w świecie kreatywności oraz inspiracji.
       </div>
     </section>
     <!-- Koniec sekcji Usługi -->
-
-
-
-
-
 
     <!-- ======= Counts Section ======= -->
     <section id="counts" class="counts">
@@ -859,7 +862,18 @@ Witaj w świecie kreatywności oraz inspiracji.
 
     // Wywołaj funkcję przy ładowaniu strony
     window.onload = scrollToMiddleOfSection;
+
+
+    document.getElementById("imageContainer").addEventListener("mousemove", function(e) {
+      const mouseX = e.pageX - this.offsetLeft;
+      const containerWidth = this.offsetWidth;
+      const percentage = (mouseX / containerWidth) * 100;
+      this.style.setProperty("--mx", percentage + "%");
+    });
   </script>
+
+
+  
 
 </body>
 

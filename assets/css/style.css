@@ -1633,3 +1633,49 @@ section {
   display: none;
   visibility: hidden;
 }
+
+
+
+.image-container {
+  position: relative;
+  width: auto; /* Ustaw szerokość według potrzeb */
+  height: 600px; /* Lub ustaw wysokość według potrzeb */
+  overflow: hidden;
+}
+
+.before-image,
+.after-image {
+  position: absolute;
+  top: 0;
+  width: auto;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.before-image {
+  background-image: url("przed_obróbka.jpg");
+}
+
+.after-image {
+  background-image: url("po_obróbce.jpg");
+  clip-path: inset(0 50% 0 0); /* Początkowe położenie kreski na środku szerokości */
+  transition: clip-path 0.3s ease;
+}
+
+.image-container:hover .after-image {
+  --x: calc((100% - var(--mx)) - 1px);
+  clip-path: inset(0 calc(100% - var(--mx)) 0 0);
+}
+
+.after-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--mx);
+  width: 1px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Kolor linii maski */
+  z-index: 1;
+  pointer-events: none;
+}
