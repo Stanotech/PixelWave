@@ -1634,22 +1634,26 @@ section {
   visibility: hidden;
 }
 
-
+.parent-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .image-container {
   position: relative;
-  display: inline-block; /* Ustawienie kontenera jako inline-block */
+  display: block; /* Zmieniamy na blokowy element */  
   height: 400px; /* Lub ustawienie wysokości według potrzeb */
   width: auto; /* Ustawienie szerokości na auto, aby dostosować się do zawartości */
+  margin: 0 auto 
 }
+
 .before-image,
 .after-image {
   position: absolute;
   top: 0;
   width: auto;
   height: 100%;
-  background-size: cover;
-  background-position: center;
 }
 
 .before-image {
@@ -1678,3 +1682,4 @@ section {
   z-index: 1;
   pointer-events: none;
 }
+
