@@ -155,19 +155,6 @@
             <p>Sprawdź nasze portfolio</p>
         </div>
 
-        <!--
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">Wszystkie</li>
-              <li data-filter=".filter-Aranżacja">Aranżacja</li>
-              <li data-filter=".filter-Detale">Detale</li>
-              <li data-filter=".filter-Produkt">Produkt</li>
-            </ul>
-          </div>
-        </div>
-        -->
-
 
         <!-- ======= Portfolio slider======= -->
 
@@ -456,10 +443,11 @@
       
       
     </section><!-- Koniec sekcji Portfolio -->
-
-    <div class="image-container" id="imageContainer">
-      <img img src="assets/img/portfolio/przedpo/Zegarek1.jpg" id="imageContainer"alt="Przed obróbką" class="before-image">
-      <img img src="assets/img/portfolio/przedpo/Zegarek2.jpg" alt="Po obróbce" class="after-image">
+    <div>
+      <div class="image-container" id="imageContainer">
+        <img img src="assets/img/portfolio/przedpo/Zegarek1.jpg" alt="Przed obróbką" class="before-image">
+        <img img src="assets/img/portfolio/przedpo/Zegarek2.jpg" alt="Po obróbce" class="after-image">
+      </div>
     </div>
 
     <!-- ======= Sekcja O nas ======= -->
@@ -865,11 +853,13 @@ Witaj w świecie kreatywności oraz inspiracji.
 
 
     document.getElementById("imageContainer").addEventListener("mousemove", function(e) {
-      const mouseX = e.pageX - this.offsetLeft;
-      const containerWidth = this.offsetWidth;
-      const percentage = (mouseX / containerWidth) * 100;
+      const rect = e.target.getBoundingClientRect(); // Pobieramy informacje o położeniu obrazu
+      const mouseX = e.clientX - rect.left; // Obliczamy pozycję X względem lewej krawędzi obrazu
+      const imageWidth = e.target.offsetWidth; // Szerokość obrazu
+      const percentage = (mouseX / imageWidth) * 100;
       this.style.setProperty("--mx", percentage + "%");
     });
+
   </script>
 
 

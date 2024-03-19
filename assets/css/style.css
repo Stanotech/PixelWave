@@ -1638,11 +1638,10 @@ section {
 
 .image-container {
   position: relative;
-  width: auto; /* Ustaw szerokość według potrzeb */
-  height: 600px; /* Lub ustaw wysokość według potrzeb */
-  overflow: hidden;
+  display: inline-block; /* Ustawienie kontenera jako inline-block */
+  height: 400px; /* Lub ustawienie wysokości według potrzeb */
+  width: auto; /* Ustawienie szerokości na auto, aby dostosować się do zawartości */
 }
-
 .before-image,
 .after-image {
   position: absolute;
