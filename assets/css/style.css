@@ -1302,6 +1302,11 @@ section {
   color: #484848;
 }
 
+.contact .info h2 {
+  font-size: 25px;
+
+}
+
 .contact .info .email,
 .contact .info .phone {
   margin-top: 40px;
