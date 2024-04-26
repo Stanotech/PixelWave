@@ -24,7 +24,7 @@ www.pixelum.pl
 >    a to ze względu na stylowanie po klasach które są generowane dynamicznie przez skrypty.
 
 - Wszystkie pliki z katalogu `./assets/build` są plikami zależnymi, które są generowane przy pomocy komendy `npm run build`.
-- Nie należy edytować tych plików, ponieważ zmiany zostaną nadpisane przy kolejnym budowaniu strony.
+  Nie należy edytować tych plików, ponieważ zmiany zostaną nadpisane przy kolejnym budowaniu strony.
 
 ---
 
