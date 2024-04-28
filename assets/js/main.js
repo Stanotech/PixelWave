@@ -35,7 +35,7 @@
   }
 
   /**
-   * Easy on scroll event listener 
+   * Easy on scroll event listener
    */
   const onscroll = (el, listener) => {
     el.addEventListener('scroll', listener)
@@ -271,7 +271,7 @@
   // });
 
   /**
-   * Initiate portfolio lightbox 
+   * Initiate portfolio lightbox
    */
   GLightbox({
     selector: '.portfolio-lightbox'
@@ -327,7 +327,7 @@
   // });
 
   /**
-   * Initiate Pure Counter 
+   * Initiate Pure Counter
    */
   new PureCounter();
   
@@ -364,5 +364,15 @@
     const percentage = (mouseX / imageWidth) * 100;
     this.style.setProperty("--mx", percentage + "%");
   });
+  
+  /**
+   * Inject vendors.min.css file into the head of the document on window load
+   */
+  window.onload = function() {
+    let link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/assets/build/vendors.min.css';
+    document.head.appendChild(link);
+  };
   
 })()
