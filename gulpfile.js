@@ -55,7 +55,7 @@ function concatAndMinifyVendorsCss () {
 
 function minifyAndConcatJs () {
   return src([
-    'assets/vendor/bootstrap/js/bootstrap.bundle.js',
+    // 'assets/vendor/bootstrap/js/bootstrap.bundle.js',
     'assets/vendor/swiper/swiper-bundle.min.js',
     'assets/vendor/glightbox/js/glightbox.js',
     'assets/vendor/purecounter/purecounter_vanilla.js',

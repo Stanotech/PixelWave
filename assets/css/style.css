@@ -11,7 +11,7 @@
 --------------------------------------------------------------*/
 
 body {
-  font-family: "Arial", "Tahoma",  sans-serif;
+  /*font-family: "Arial", "Tahoma",  sans-serif;*/
   letter-spacing: 0.05em;
   color: #444444;
 }
@@ -41,7 +41,7 @@ a:hover {
   width: 40px;
   height: 40px;
   border-radius: 4px;
-  transition: all 0.4s;
+  transition: opacity 0.4s;
 }
 
 .back-to-top i {
@@ -126,6 +126,7 @@ a:hover {
 
 #header .logo {
   font-size: 32px;
+  font-size: clamp(12px, 7.5vw, 32px);
   margin: 0;
   padding: 0;
   line-height: 1;
@@ -319,7 +320,6 @@ section {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 400px;
 }
 
 /*--------------------------------------------------------------
@@ -421,9 +421,6 @@ section {
 /*--------------------------------------------------------------
 # Counts
 --------------------------------------------------------------*/
-.counts .content {
-  padding: 30px 0;
-}
 
 .counts .content h3 {
   font-weight: 600;
@@ -477,21 +474,21 @@ section {
 }
 
 
-@media (max-width: 991px) {
-  .counts .image {
-    text-align: center;
-  }
+/*@media (max-width: 991px) {*/
+/*  .counts .image {*/
+/*    text-align: center;*/
+/*  }*/
 
-  .counts .image img {
-    max-width: 80%;
-  }
-}
+/*  .counts .image img {*/
+/*    max-width: 80%;*/
+/*  }*/
+/*}*/
 
-@media (max-width: 667px) {
-  .counts .image img {
-    max-width: 100%;
-  }
-}
+/*@media (max-width: 667px) {*/
+/*  .counts .image img {*/
+/*    max-width: 100%;*/
+/*  }*/
+/*}*/
 
 /*--------------------------------------------------------------
 # Testimonials
@@ -694,17 +691,14 @@ section {
 }
 
 .contact .info i {
-  font-size: 20px;
   background: #ffc451;
   color: #151515;
-  float: left;
-  width: 44px;
-  height: 44px;
-  display: flex;
+  width: 1em;
+  height: 1em;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  transition: all 0.3s ease-in-out;
 }
 
 .contact .info h4 {
