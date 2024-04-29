@@ -193,7 +193,7 @@ section {
   margin: 0 0 5px 0;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #aaaaaa;
+  color: #474747;
 }
 
 .section-title h2::after {
@@ -312,7 +312,7 @@ section {
 
 .features .icon-box p {
   font-size: 15px;
-  color: #848484;
+  color: #141414;
   margin-left: 60px;
 }
 
@@ -346,7 +346,7 @@ section {
 }
 
 .services .icon-box .icon i {
-  color: #151515;
+  color: #000000;
   font-size: 28px;
   transition: ease-in-out 0.3s;
 }
@@ -358,7 +358,7 @@ section {
 }
 
 .services .icon-box h4 a {
-  color: #151515;
+  color: #000000;
   transition: ease-in-out 0.3s;
 }
 
@@ -667,14 +667,14 @@ section {
   display: block;
   font-size: 13px;
   font-weight: 400;
-  color: #aaaaaa;
+  color: #474747;
 }
 
 .team .member .member-info p {
   font-style: italic;
   font-size: 14px;
   line-height: 26px;
-  color: #777777;
+  color: #474747;
 }
 
 .team .member:hover .social {
