@@ -13,7 +13,24 @@
       event.preventDefault();
 
       let thisForm = this;
-
+      
+      const fields = thisForm.querySelectorAll('[name]');
+      let formIsValid = true;
+      
+      fields.forEach( function(e) {
+        if('' === e.value) {
+          e.classList.add('is-invalid');
+          formIsValid = false;
+        } else {
+          e.classList.remove('is-invalid');
+        }
+      });
+      
+      if( !formIsValid ) {
+        displayError(thisForm, errorMessage[getPageLanguage()].fill);
+        return;
+      }
+      
       let action = thisForm.getAttribute('action');
       let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
       
