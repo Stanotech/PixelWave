@@ -6,8 +6,28 @@
 (function () {
   "use strict";
 
+  const errorMessage = {
+    'en': {
+      'fill': 'Please fill out all fields!',
+      'submission': 'Form submission failed and no error message returned from: ',
+      'noAction': 'Form action attribute is not set!',
+      'noRecaptcha': 'The reCaptcha javascript API url is not loaded!'
+    },
+    'pl': {
+      'fill': 'Proszę wypełnić wszystkie wymagane pola!',
+      'submission': 'Wysłanie formularza nie powiodło się i nie zwrócono żadnej wiadomości błędu z: ',
+      'noAction': 'Atrybut akcji formularza nie jest ustawiony!',
+      'noRecaptcha': 'Adres URL interfejsu API reCaptcha nie jest załadowany!'
+    },
+  }
+  
   let forms = document.querySelectorAll('.php-email-form');
-
+  
+  function getPageLanguage() {
+    let lang = document.documentElement.lang;
+    return lang ? lang.toLowerCase() : 'en';
+  }
+  
   forms.forEach( function(e) {
     e.addEventListener('submit', function(event) {
       event.preventDefault();
@@ -35,9 +55,10 @@
       let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
       
       if( ! action ) {
-        displayError(thisForm, 'The form action property is not set!');
+        displayError(thisForm, errorMessage[getPageLanguage()].noAction);
         return;
       }
+      
       thisForm.querySelector('.loading').classList.add('d-block');
       thisForm.querySelector('.error-message').classList.remove('d-block');
       thisForm.querySelector('.sent-message').classList.remove('d-block');
@@ -58,7 +79,7 @@
             }
           });
         } else {
-          displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
+          displayError(thisForm, errorMessage[getPageLanguage()].noRecaptcha);
         }
       } else {
         php_email_form_submit(thisForm, action, formData);
@@ -76,16 +97,16 @@
       if( response.ok ) {
         return response.text();
       } else {
-        throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
+        throw new Error(`${response.status} ${response.statusText} ${response.url}`);
       }
     })
     .then(data => {
       thisForm.querySelector('.loading').classList.remove('d-block');
       if (data.trim() == 'OK') {
         thisForm.querySelector('.sent-message').classList.add('d-block');
-        thisForm.reset(); 
+        thisForm.reset();
       } else {
-        throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
+        throw new Error(data ? data : errorMessage[getPageLanguage()].submission + action);
       }
     })
     .catch((error) => {
