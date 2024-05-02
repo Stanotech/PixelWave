@@ -31,8 +31,9 @@ try {
   $mail->Port = 587; // TCP port to connect to
 
   //Recipients
-  $mail->setFrom($formEmail, $formName); // Add a sender
-  $mail->addAddress('office@pixelum.com', 'Pixelum'); // Add a recipient
+  $mail->setFrom('mateusz@krzyk.pl', 'Mateusz Krzyk');
+  $mail->addReplyTo($formEmail, $formName);
+  $mail->addAddress('office@pixelum.pl', 'Pixelum'); // Add a recipient
 
   // Content
   $mail->isHTML(false); // Set email format to HTML (true) or plain text (false)
