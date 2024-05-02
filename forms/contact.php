@@ -26,7 +26,7 @@ try {
   $mail->Host = 'madmesis.home.pl'; // Set the SMTP server to send through
   $mail->SMTPAuth = true; // Enable SMTP authentication
   $mail->Username = 'mateusz@krzyk.pl'; // SMTP username
-  $mail->Password = 'MinisterJeBanany^H'; // SMTP password
+  $mail->Password = 'MinisterJeBanany^M'; // SMTP password
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
   $mail->Port = 587; // TCP port to connect to
 
