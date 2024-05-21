@@ -1,2 +1,3 @@
+Sitemap: https://www.pixelum.pl/sitemap.xml
 User-agent: *
 Disallow:
