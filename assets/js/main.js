@@ -6,6 +6,22 @@
 * License: https://bootstrapmade.com/license/
 */
 (function() {
+
+  // Google tag (gtag.js)
+  
+  window.dataLayer = window.dataLayer || [];
+
+  // Funkcja do przesyłania danych do dataLayer
+  function gtag(){dataLayer.push(arguments);}
+  
+  // Ustawienie daty inicjalizacji tagów
+  gtag('js', new Date());
+  
+  // Konfiguracja Google Analytics z Twoim identyfikatorem śledzenia
+  gtag('config', 'G-HCKNTQ9FCH');
+
+
+
   "use strict";
 
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
