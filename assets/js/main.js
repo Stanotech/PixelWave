@@ -390,5 +390,20 @@
     document.head.appendChild(link);
   };
   
+
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var map = L.map('map').setView([52.4148991, 16.8972298], 15);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([52.4148991, 16.8972298]).addTo(map)
+        .bindPopup('Siedziba firmy')
+        .openPopup();
+  });
+
   
 })()
