@@ -390,7 +390,9 @@
     document.head.appendChild(link);
   };
   
-
+  /**
+   * Map
+   */
 
 
   document.addEventListener('DOMContentLoaded', function () {
