@@ -38,7 +38,7 @@ a:hover {
   visibility: hidden;
   opacity: 0;
   right: 15px;
-  bottom: 15px;
+  bottom: 95px;
   z-index: 996;
   background: #ffc451;
   width: 40px;
@@ -308,7 +308,7 @@ section {
 }
 
 .features .icon-box i {
-  font-size: 48px;
+  font-size: 24px;
   float: left;
   color: #ffc451;
 }
@@ -442,7 +442,7 @@ section {
 
 .counts .content .count-box i {
   display: block;
-  font-size: 36px;
+  font-size: 1px;
   color: #ffc451;
   float: left;
 }
@@ -1105,4 +1105,20 @@ section {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
   pointer-events: none;
+}
+
+.map {
+  height: 500px;
+}
+
+.icon {
+  fill: currentColor;
+  width: 24px;
+  height: 24px;
+}
+
+.icon32 {
+  fill: currentColor;
+  width: 32px;
+  height: 32px;
 }

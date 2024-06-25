@@ -1,3 +1,4 @@
-Sitemap: https://www.pixelum.pl/sitemap.xml
 User-agent: *
-Disallow:
+Allow: /
+
+Sitemap: https://pixelum.pl/sitemap.xml
