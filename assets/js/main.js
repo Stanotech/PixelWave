@@ -391,7 +391,7 @@
   };
   
   /**
-   * Map
+   * Map and schema.org
    */
 
 
@@ -405,6 +405,39 @@
     L.marker([52.4148991, 16.8972298]).addTo(map)
         .bindPopup('Siedziba firmy')
         .openPopup();
+  /**
+   * schema.org
+   */
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.innerHTML = `
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Pixelum",
+        "url": "https://www.pixelum.pl",
+        "logo": "https://www.pixelum.pl/assets/img/logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+48 604216600",
+          "contactType": "Customer Service",
+          "email": "office@pixelum.pl"
+        },
+        "sameAs": [
+          "https://www.facebook.com/people/Pixelum/61558395214915/",
+          "https://www.linkedin.com/company/pixelum-studio"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Dabrowskiego 89/183",
+          "addressLocality": "Poznań",
+          "postalCode": "60-574",
+          "addressCountry": "Polska"
+        }
+      }
+    `;
+    document.head.appendChild(script);
+        
   });
 
   
