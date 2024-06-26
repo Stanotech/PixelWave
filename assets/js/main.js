@@ -7,8 +7,27 @@
 */
 (function() {
 
- 
-
+   // Funkcja do dynamicznego załadowania skryptu zewnętrznego
+  function loadScript(src, onLoad) {
+    const script = document.createElement('script');
+    script.src = src;
+    script.async = true;
+    script.onload = onLoad;
+    document.head.appendChild(script);
+  }
+  
+  // Funkcja do inicjalizacji Google Analytics
+  function initGoogleAnalytics() {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-HCKNTQ9FCH');
+  }
+  
+  // Najpierw załaduj skrypt `gtag.js`, a następnie zainicjuj Google Analytics
+  loadScript('https://www.googletagmanager.com/gtag/js?id=G-HCKNTQ9FCH', initGoogleAnalytics);
 
 
   "use strict";
