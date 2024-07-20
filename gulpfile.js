@@ -13,7 +13,7 @@ function treeShakeAndMinimizeMainCss () {
     'assets/css/style.css',
   ])
     .pipe(concat('style.min.css'))  // Concatenate into a single file
-    .pipe(purgeCSS({ content: ['index_dev.html'] })) // Remove unused CSS
+    .pipe(purgeCSS({ content: ['index_dev.php', 'assets/js/**/*.js'] })) // Remove unused CSS
     .pipe(cleanCSS())  // Minify CSS
     .pipe(rename('style.min.css')) // Rename the output file
     .pipe(dest('assets/build')) // Output to the directory
@@ -34,7 +34,7 @@ function concatAndMinifyVendorsCss () {
   return series(
     function minifyPurgeSwiper() {
       return src('assets/vendor/swiper/swiper-bundle.min.css')
-        .pipe(purgeCSS({ content: ['index_dev.html'] })) // Remove unused CSS
+        .pipe(purgeCSS({ content: ['index_dev.php'] })) // Remove unused CSS
         .pipe(cleanCSS())  // Minify CSS
         .pipe(rename('swiper-bundle.min.css')) // Rename the output file
         .pipe(dest('./assets/build')) // Output to the directory
@@ -69,7 +69,7 @@ function minifyAndConcatJs () {
 }
 
 function injectFilesAndMinifyHtml () {
-  return src('index_dev.html')
+  return src('index_dev.php')
   .pipe(
     inject(src('assets/build/style.min.css', {read: true}), {
       starttag: '<!-- inject:css -->',
@@ -92,7 +92,7 @@ function injectFilesAndMinifyHtml () {
     minifyCSS: true,
     minifyJS: true,
   })) // Minify HTML
-  .pipe(rename('index.html')) // Rename the output file
+  .pipe(rename('index.php')) // Rename the output file
   .pipe(dest('.'))
 }
 
