@@ -1,21 +1,24 @@
-const { src, dest, series } = require('gulp')
-const concat = require('gulp-concat')
-const terser = require('gulp-terser')
-const cleanCSS = require('gulp-clean-css')
-const purgeCSS = require('gulp-purgecss')
-const htmlMin = require('gulp-htmlmin')
-const rename = require('gulp-rename')
-const inject = require('gulp-inject')
+const { src, dest, series } = require('gulp');
+const concat = require('gulp-concat');
+const terser = require('gulp-terser');
+const cleanCSS = require('gulp-clean-css');
+const purgeCSS = require('gulp-purgecss');
+const htmlMin = require('gulp-htmlmin');
+const rename = require('gulp-rename');
+const inject = require('gulp-inject');
+const sourcemaps = require('gulp-sourcemaps');
 
 function treeShakeAndMinimizeMainCss () {
   return src([
     'assets/vendor/bootstrap/css/bootstrap.css',
     'assets/css/style.css',
   ])
+    .pipe(sourcemaps.init())
     .pipe(concat('style.min.css'))  // Concatenate into a single file
     .pipe(purgeCSS({ content: ['index_dev.php', 'assets/js/**/*.js'] })) // Remove unused CSS
     .pipe(cleanCSS())  // Minify CSS
     .pipe(rename('style.min.css')) // Rename the output file
+    .pipe(sourcemaps.write('.'))
     .pipe(dest('assets/build')) // Output to the directory
 }
 
@@ -24,9 +27,11 @@ function concatJsCssToMainCss () {
     'assets/build/style.min.css',
     'assets/css/style-important.css',
   ])
+    .pipe(sourcemaps.init())
     .pipe(concat('style.min.css'))  // Concatenate into a single file
     .pipe(cleanCSS())  // Minify CSS
     .pipe(rename('style.min.css')) // Rename the output file
+    .pipe(sourcemaps.write('.'))
     .pipe(dest('assets/build'))
 }
 
@@ -34,20 +39,26 @@ function concatAndMinifyVendorsCss () {
   return series(
     function minifyPurgeSwiper() {
       return src('assets/vendor/swiper/swiper-bundle.min.css')
+        .pipe(sourcemaps.init())
         .pipe(purgeCSS({ content: ['index_dev.php'] })) // Remove unused CSS
         .pipe(cleanCSS())  // Minify CSS
         .pipe(rename('swiper-bundle.min.css')) // Rename the output file
+        .pipe(sourcemaps.write('.'))
         .pipe(dest('./assets/build')) // Output to the directory
     },
     function minifyPurgeGlightbox() {
       return src('assets/vendor/glightbox/css/glightbox.css')
+        .pipe(sourcemaps.init())
         .pipe(cleanCSS())  // Minify CSS
         .pipe(rename('glightbox.min.css')) // Rename the output file
+        .pipe(sourcemaps.write('.'))
         .pipe(dest('./assets/build')) // Output to the directory
     },
     function concatenateVendorsCss() {
       return src(['assets/build/swiper-bundle.min.css', 'assets/build/glightbox.min.css'])
+        .pipe(sourcemaps.init())
         .pipe(concat('vendors.min.css'))  // Concatenate into a single file
+        .pipe(sourcemaps.write('.'))
         .pipe(dest('./assets/build')) // Output to the directory
     }
   );
@@ -62,9 +73,11 @@ function minifyAndConcatJs () {
     'assets/vendor/php-email-form/validate.js',
     'assets/js/main.js',
   ])
+    .pipe(sourcemaps.init())
     .pipe(concat('script-bundle.min.js'))  // Concatenate into a single file
     .pipe(terser())  // Minify and treeshake JavaScript
     .pipe(rename('script-bundle.min.js')) // Rename the output file
+    .pipe(sourcemaps.write('.'))
     .pipe(dest('assets/build')) // Output to the directory
 }
 
@@ -104,4 +117,4 @@ const build = series(
   injectFilesAndMinifyHtml
 )
 
-exports.default = build
+exports.default = build;
