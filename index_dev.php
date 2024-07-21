@@ -893,6 +893,6 @@ header("Content-Security-Policy: $cspWithNonce");
 
     <!-- inject:js -->
     <!-- endinject:js -->
-    <!--<script nonce="<?= htmlspecialchars($nonce, ENT_QUOTES, 'UTF-8') ?>" src="https://unpkg.com/leaflet/dist/leaflet.js"></script> -->
+    <script nonce="<?= htmlspecialchars($nonce, ENT_QUOTES, 'UTF-8') ?>" src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   </body>
 </html>
