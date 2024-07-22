@@ -1,14 +1,14 @@
 <?php
-// Funkcja generująca unikalny nonce
+// nonce generation
 function generateNonce() {
     return bin2hex(random_bytes(16));
 }
 
-// Generowanie nonce dla bieżącego żądania
+// nonce generation fof csp header
 $nonce = generateNonce();
 
 $cspFromHtaccess = "default-src 'self' https://unpkg.com/ https://www.google.com https://fonts.googleapis.com https://fonts.gstatic.com data: blob: https://va.tawk.to wss://vsa111.tawk.to https://www.googletagmanager.com/ https://*.tawk.to/ https://*.jsdelivr.net/; media-src https://*.tawk.to/; style-src 'self' https://www.googletagmanager.com/ https://unpkg.com/ https://fonts.googleapis.com https://embed.tawk.to https://*.jsdelivr.net/ 'unsafe-inline'; font-src 'self' https://*.jsdelivr.net/ https://fonts.gstatic.com https://*.tawk.to/ 'unsafe-inline' data:; img-src https://fonts.gstatic.com/ https://www.googletagmanager.com/ https://unpkg.com/ https://*.jsdelivr.net/ https://*.tawk.to/ https://*.tile.openstreetmap.org/ 'self' data:; connect-src wss://vsa92.tawk.to/ https://vsa111.tawk.to https://vsa59.tawk.to wss://*.tawk.to https://*.tawk.to; frame-src https://www.googletagmanager.com/;";
-$scriptSrc = "'self' https://*.jsdelivr.net/ https://unpkg.com/ https://googletagmanager.com/ https://www.googletagmanager.com/ https://embed.tawk.to/ 'nonce-$nonce' 'unsafe-eval'";
+$scriptSrc = "'self' https://*.jsdelivr.net/ https://unpkg.com/ https://googletagmanager.com/ https://www.googletagmanager.com/ https://embed.tawk.to/ 'unsafe-eval' 'nonce-$nonce' ";
 $cspWithNonce = $cspFromHtaccess . " script-src $scriptSrc;";
 $cspWithNonce = str_replace(array("\r", "\n"), '', $cspWithNonce);
 header("Content-Security-Policy: $cspWithNonce");
@@ -830,7 +830,7 @@ header("Content-Security-Policy: $cspWithNonce");
               </div>
 
               <div class="col-lg-8 mt-5 mt-lg-0">
-                <form action="forms/contact.php" method="post" role="form" class="d-block php-email-form">
+                <form id="contactform" action="forms/contact.php" method="post" role="form" class="d-block php-email-form">
                   <div class="row">
                     <div class="col-md-6 form-group">
                       <input type="text" name="name" class="form-control" id="name" placeholder="Twoje imię" autocomplete="true"/>
