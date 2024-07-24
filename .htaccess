@@ -1,5 +1,12 @@
 RewriteEngine On
 
+# Ustawienie index.php jako domyślnego pliku indexu
+DirectoryIndex index.php
+
+# Przekierowanie z index.html na index.php
+RewriteEngine On
+RewriteRule ^index\.html$ /index.php [L,R=301]
+
 # Przekierowanie HTTP do HTTPS
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

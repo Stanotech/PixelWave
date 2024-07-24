@@ -22,14 +22,21 @@ header("Content-Security-Policy: $cspWithNonce");
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
     <title>Zdjęcia produktowe- packshoty, aranżacje, home stage-Cennik</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Cennik",
+        "url": "https://pixelum.pl/index.php#services",
+        "description": "Sprawdź nasz cennik usług i produktów."
+      }
+    </script>
     <meta name="description" content="Studio fotograficzne Pixelum - wyjątkowe sesje zdjęciowe dla twoich produktów, szybka i profesjonalna współpraca. Packshoty, wizualizacje i animacje 3D, obróbka zdjęć." />
-
     <meta property="og:title" content="Zdjęcia produktowe packshot i aranżacje">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://www.pixelum.pl/assets/img/hero-bg.webp">
     <meta property="og:url" content="https://www.pixelum.pl">
     <meta property="og:description" content="Studio fotograficzne Pixelum - wyjątkowe sesje zdjęciowe dla twoich produktów, szybka i profesjonalna współpraca">
-    
     <link rel="canonical" href="https://pixelum.pl/index.html">
     
     <!-- inject:css -->
