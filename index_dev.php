@@ -7,7 +7,7 @@ function generateNonce() {
 // nonce generation fof csp header
 $nonce = generateNonce();
 
-$cspFromHtaccess = "default-src 'self' https://unpkg.com/ https://www.google.com https://fonts.googleapis.com https://fonts.gstatic.com data: blob: https://va.tawk.to wss://vsa111.tawk.to https://www.googletagmanager.com/ https://*.tawk.to/ https://*.jsdelivr.net/; media-src https://*.tawk.to/; style-src 'self' https://www.googletagmanager.com/ https://unpkg.com/ https://fonts.googleapis.com https://embed.tawk.to https://*.jsdelivr.net/ 'unsafe-inline'; font-src 'self' https://*.jsdelivr.net/ https://fonts.gstatic.com https://*.tawk.to/ 'unsafe-inline' data:; img-src https://fonts.gstatic.com/ https://www.googletagmanager.com/ https://unpkg.com/ https://*.jsdelivr.net/ https://*.tawk.to/ https://*.tile.openstreetmap.org/ 'self' data:; connect-src wss://vsa92.tawk.to/ https://vsa111.tawk.to https://vsa59.tawk.to wss://*.tawk.to https://*.tawk.to; frame-src https://www.googletagmanager.com/;";
+$cspFromHtaccess = "default-src 'self' https://unpkg.com/ https://www.google.com https://fonts.googleapis.com https://fonts.gstatic.com data: blob: https://va.tawk.to wss://vsa111.tawk.to https://www.googletagmanager.com/ https://*.tawk.to/ https://*.jsdelivr.net/; media-src https://*.tawk.to/; style-src 'self' https://platform.illow.io/ https://www.googletagmanager.com/ https://unpkg.com/ https://fonts.googleapis.com https://embed.tawk.to https://*.jsdelivr.net/ 'unsafe-inline'; font-src 'self' https://platform.illow.io/ https://*.jsdelivr.net/ https://fonts.gstatic.com https://*.tawk.to/ 'unsafe-inline' data:; img-src https://fonts.gstatic.com/ https://www.googletagmanager.com/ https://unpkg.com/ https://*.jsdelivr.net/ https://*.tawk.to/ https://*.tile.openstreetmap.org/ 'self' data:; connect-src https://api.platform.illow.io/ https://platform.illow.io/ https://region1.google-analytics.com/ wss://vsa92.tawk.to/ https://vsa111.tawk.to https://vsa59.tawk.to wss://*.tawk.to https://*.tawk.to; frame-src https://www.googletagmanager.com/;";
 $scriptSrc = "'self' https://*.jsdelivr.net/ https://unpkg.com/ https://googletagmanager.com/ https://www.googletagmanager.com/ https://embed.tawk.to/ 'unsafe-eval' 'nonce-$nonce' ";
 $cspWithNonce = $cspFromHtaccess . " script-src $scriptSrc;";
 $cspWithNonce = str_replace(array("\r", "\n"), '', $cspWithNonce);
@@ -17,7 +17,31 @@ header("Content-Security-Policy: $cspWithNonce");
 <!DOCTYPE html>
 <html lang="pl">
   <head>
-    
+
+    <!-- Google Tag Manager -->
+
+    <script nonce="<?= htmlspecialchars($nonce, ENT_QUOTES, 'UTF-8') ?>">
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TZNTG6D7');
+    </script>
+
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) analitics-->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DLNE5W9MZ7" nonce="<?= htmlspecialchars($nonce, ENT_QUOTES, 'UTF-8') ?>"></script>
+    <script nonce="<?= htmlspecialchars($nonce, ENT_QUOTES, 'UTF-8') ?>">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-DLNE5W9MZ7');
+    </script>
+    -->
+
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
@@ -42,24 +66,12 @@ header("Content-Security-Policy: $cspWithNonce");
     <!-- inject:css -->
     <!-- endinject:css -->
 
-    <!-- Google Tag Manager -->
-      <script nonce="<?= htmlspecialchars($nonce, ENT_QUOTES, 'UTF-8') ?>">
-
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-TZNTG6D7');
-
-      </script>
-    <!-- End Google Tag Manager -->
   </head>
 
   <body>
-
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZNTG6D7"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZNTG6D7"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- ======= Nagłówek ======= -->

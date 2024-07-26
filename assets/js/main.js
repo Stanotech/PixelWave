@@ -5,20 +5,65 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
-(function() {
+(function () {
+  console.log('DOMContentLoaded event fired1');
+  document.addEventListener('DOMContentLoaded', function () {
+    console.log('DOMContentLoaded event fired');
+
+    var checkIframe = setInterval(function () {
+      var iframe = document.querySelector('iframe#illow-banner-widget');
+      if (iframe) {
+        console.log('Iframe found:', iframe);
+        clearInterval(checkIframe); // Zatrzymaj sprawdzanie, gdy `iframe` jest znaleziony
+
+        // Tutaj dodaj resztę swojego skryptu
+        var observer = new MutationObserver(function (mutations) {
+          mutations.forEach(function (mutation) {
+            if (mutation.attributeName === 'style') {
+              console.log('Style attribute changed:', iframe.style.cssText);
+              checkAndHideIframe(iframe);
+            }
+          });
+        });
+
+        var config = {
+          attributes: true // Monitorowanie zmian atrybutów
+        };
+
+        observer.observe(iframe, config);
+        console.log('Observer started');
+        checkAndHideIframe(iframe); // Początkowe sprawdzenie
+
+      } else {
+        console.log('Iframe not found yet');
+      }
+    }, 500); // Sprawdzaj co 500 ms
+  });
+
+  function checkAndHideIframe(iframe) {
+    console.log('Checking iframe:', iframe); // Logujemy, który iframe jest sprawdzany
+    var style = iframe.style;
+    if (style.height === '60px' && style.width === '60px') {
+      console.log('Hiding iframe'); // Logujemy, kiedy iframe jest ukrywany
+      iframe.style.display = 'none'; // Ukryj iframe
+    } else {
+      console.log('Showing iframe'); // Logujemy, kiedy iframe jest pokazywany
+      iframe.style.display = ''; // Pokaż iframe
+    }
+  }
 
   "use strict";
 
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/662c9ab1a0c6737bd1315f1b/1hsf3oi4e';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function () {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/662c9ab1a0c6737bd1315f1b/1hsf3oi4e';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
   })();
-  
+
   /**
    * Easy selector helper function
    */
@@ -121,14 +166,14 @@
   /**
    * Mobile nav toggle
    */
-  on('click', '.mobile-nav-toggle', function(e) {
+  on('click', '.mobile-nav-toggle', function (e) {
     select('#navbar').classList.toggle('navbar-mobile')
   });
 
   /**
    * Mobile nav dropdowns activate
    */
-  on('click', '.navbar .dropdown > a', function(e) {
+  on('click', '.navbar .dropdown > a', function (e) {
     if (select('#navbar').classList.contains('navbar-mobile')) {
       e.preventDefault()
       this.nextElementSibling.classList.toggle('dropdown-active')
@@ -138,7 +183,7 @@
   /**
    * Scrool with ofset on links with a class name .scrollto
    */
-  on('click', '.scrollto', function(e) {
+  on('click', '.scrollto', function (e) {
     if (select(this.hash)) {
       e.preventDefault()
 
@@ -173,7 +218,7 @@
       preloader.remove()
     });
   }
-  
+
   /**
    * Clients Slider
    */
@@ -209,12 +254,12 @@
   //     }
   //   }
   // });
-  
+
   /**
    * Portfolio Slider
    */
-  const portfoliosWrappers = ['.portfolio-slider-arranges', '.portfolio-slider-products', '.portfolio-slider-homestages' ]
-  
+  const portfoliosWrappers = ['.portfolio-slider-arranges', '.portfolio-slider-products', '.portfolio-slider-homestages']
+
   portfoliosWrappers.forEach(portfolioWrapper => {
     new Swiper(portfolioWrapper, {
       speed: 400,
@@ -249,7 +294,7 @@
       }
     });
   })
-  
+
 
   /**
    * Porfolio isotope and filter
@@ -341,7 +386,7 @@
    * Initiate Pure Counter
    */
   new PureCounter();
-  
+
   /**
    * Funkcja do przewinięcia diva na środek ekranu na podstawie ID z URL
    */
@@ -375,17 +420,17 @@
     const percentage = (mouseX / imageWidth) * 100;
     this.style.setProperty("--mx", percentage + "%");
   });
-  
+
   /**
    * Inject vendors.min.css file into the head of the document on window load
    */
-  window.onload = function() {
+  window.onload = function () {
     let link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = '/assets/build/vendors.min.css';
     document.head.appendChild(link);
   };
-  
+
   /**
    * Map and schema.org
    */
@@ -395,15 +440,15 @@
     var map = L.map('map').setView([52.4148991, 16.8972298], 15);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
     L.marker([52.4148991, 16.8972298]).addTo(map)
-        .bindPopup('Siedziba firmy')
-        .openPopup();
-  /**
-   * schema.org
-   */
+      .bindPopup('Siedziba firmy')
+      .openPopup();
+    /**
+     * schema.org
+     */
     const script = document.createElement('script');
     script.type = 'application/ld+json';
     script.innerHTML = `
@@ -433,8 +478,8 @@
       }
     `;
     document.head.appendChild(script);
-        
+
   });
 
-  
+
 })()
