@@ -25,13 +25,13 @@ try {
   $mail->isSMTP(TRUE); // Send using SMTP
   $mail->Host = 'madmesis.home.pl'; // Set the SMTP server to send through
   $mail->SMTPAuth = true; // Enable SMTP authentication
-  $mail->Username = 'mateusz@krzyk.pl'; // SMTP username
-  $mail->Password = 'MinisterJeBanany^M'; // SMTP password
+  $mail->Username = 's.rogala@krzyk.pl'; // SMTP username
+  $mail->Password = 'Amarantus350!'; // SMTP password 
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-  $mail->Port = 587; // TCP port to connect to
+  $mail->Port = 587; // TCP port to connect to 465
 
   //Recipients
-  $mail->setFrom('mateusz@krzyk.pl', 'Mateusz Krzyk');
+  $mail->setFrom('s.rogala@krzyk.pl', 'stach');
   $mail->addReplyTo($formEmail, $formName);
   $mail->addAddress('office@pixelum.pl', 'Pixelum'); // Add a recipient
 
