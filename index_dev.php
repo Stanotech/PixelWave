@@ -7,7 +7,7 @@ function generateNonce() {
 // nonce generation fof csp header
 $nonce = generateNonce();
 
-$cspFromHtaccess = "default-src 'self' https://unpkg.com/ https://www.google.com https://fonts.googleapis.com https://fonts.gstatic.com data: blob: https://va.tawk.to wss://vsa111.tawk.to https://www.googletagmanager.com/ https://*.tawk.to/ https://*.jsdelivr.net/; media-src https://*.tawk.to/; style-src 'self' https://platform.illow.io/ https://www.googletagmanager.com/ https://unpkg.com/ https://fonts.googleapis.com https://embed.tawk.to https://*.jsdelivr.net/ 'unsafe-inline'; font-src 'self' https://platform.illow.io/ https://*.jsdelivr.net/ https://fonts.gstatic.com https://*.tawk.to/ 'unsafe-inline' data:; img-src https://fonts.gstatic.com/ https://www.googletagmanager.com/ https://unpkg.com/ https://*.jsdelivr.net/ https://*.tawk.to/ https://*.tile.openstreetmap.org/ 'self' data:; connect-src https://api.platform.illow.io/ https://platform.illow.io/ https://region1.google-analytics.com/ wss://vsa92.tawk.to/ https://vsa111.tawk.to https://vsa59.tawk.to wss://*.tawk.to https://*.tawk.to; frame-src https://www.googletagmanager.com/;";
+$cspFromHtaccess = "default-src 'self' https://unpkg.com/ https://www.google.com https://fonts.googleapis.com https://fonts.gstatic.com data: blob: https://va.tawk.to wss://vsa111.tawk.to https://www.googletagmanager.com/ https://*.tawk.to/ https://*.jsdelivr.net/; media-src https://*.tawk.to/; style-src 'self' https://platform.illow.io/ https://www.googletagmanager.com/ https://unpkg.com/ https://fonts.googleapis.com https://embed.tawk.to https://*.jsdelivr.net/ 'unsafe-inline'; font-src 'self' https://platform.illow.io/ https://*.jsdelivr.net/ https://fonts.gstatic.com https://*.tawk.to/ 'unsafe-inline' data:; img-src https://fonts.gstatic.com/ https://www.googletagmanager.com/ https://unpkg.com/ https://*.jsdelivr.net/ https://*.tawk.to/ https://*.tile.openstreetmap.org/ 'self' data:; connect-src 'self' https://api.platform.illow.io/ https://platform.illow.io/ https://region1.google-analytics.com/ wss://vsa92.tawk.to/ https://vsa111.tawk.to https://vsa59.tawk.to wss://*.tawk.to https://*.tawk.to; frame-src https://www.googletagmanager.com/;";
 $scriptSrc = "'self' https://*.jsdelivr.net/ https://unpkg.com/ https://googletagmanager.com/ https://www.googletagmanager.com/ https://embed.tawk.to/ 'unsafe-eval' 'nonce-$nonce' ";
 $cspWithNonce = $cspFromHtaccess . " script-src $scriptSrc;";
 $cspWithNonce = str_replace(array("\r", "\n"), '', $cspWithNonce);
@@ -19,28 +19,98 @@ header("Content-Security-Policy: $cspWithNonce");
   <head>
 
     <!-- Google Tag Manager -->
-
+<!-- 
     <script nonce="<?= htmlspecialchars($nonce, ENT_QUOTES, 'UTF-8') ?>">
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-TZNTG6D7');
-    </script>
+    </script> -->
 
     <!-- End Google Tag Manager -->
 
     <!-- Google tag (gtag.js) analitics-->
-    <!--
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DLNE5W9MZ7" nonce="<?= htmlspecialchars($nonce, ENT_QUOTES, 'UTF-8') ?>"></script>
     <script nonce="<?= htmlspecialchars($nonce, ENT_QUOTES, 'UTF-8') ?>">
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-DLNE5W9MZ7');
+        
+      // Function to send data to Google Analytics
+      function sendEventToAnalytics(eventCategory, eventLabel, eventValue) {
+        gtag('event', eventCategory, {
+          'event_category': 'engagement',
+          'event_label': eventLabel,
+          'value': eventValue // time in milliseconds
+        });
+        console.log(`Event: ${eventCategory}, Label: ${eventLabel}, Value: ${eventValue}ms`);
+      }
+    
+      // Track time spent on the page
+      let pageEnterTime = new Date().getTime();
+    
+      window.addEventListener('beforeunload', function() {
+        let pageLeaveTime = new Date().getTime();
+        let timeSpentOnPage = (pageLeaveTime - pageEnterTime)/1000 ;
+        sendEventToAnalytics('time_spent_on_page', 'Total Time on Page', timeSpentOnPage);
+      });
+    
+      
+      // Track time spent on each section
+      document.addEventListener('DOMContentLoaded', (event) => {
+      const sections = document.querySelectorAll('section');
+      const sectionsTimeData = {};
+
+      sections.forEach(section => {
+        sectionsTimeData[section.id] = { startTime: 0, totalTimeSpent: 0 };
+        console.log(sectionsTimeData[section.id]);
+      });
+    
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const sectionId = entry.target.id;
+          if (entry.isIntersecting) {
+            console.log("weszłeś!", sectionId);
+            sectionsTimeData[sectionId].startTime = new Date().getTime();
+          } else {
+            const startTime = sectionsTimeData[sectionId].startTime;
+            if (startTime) {
+              const endTime = new Date().getTime();
+              const timeSpent = endTime - startTime;
+              sectionsTimeData[sectionId].totalTimeSpent += timeSpent;
+              sectionsTimeData[sectionId].startTime = 0;
+            }
+            console.log("opuściłeś!", sectionId, "czas", sectionsTimeData[sectionId].totalTimeSpent);
+          }
+        });
+      }, {
+        threshold: 0.5
+      });
+    
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+    
+      window.addEventListener('beforeunload', () => {
+        sections.forEach(section => {
+          const sectionId = section.id;
+          const startTime = sectionsTimeData[sectionId].startTime;
+          if (startTime) {
+            const endTime = new Date().getTime();
+            const timeSpent = endTime - startTime;
+            sectionsTimeData[sectionId].totalTimeSpent += timeSpent;
+          }
+          console.log(sectionsTimeData[sectionId].totalTimeSpent / 1000);
+          sendEventToAnalytics('czas_spędzony_na_sekcji', sectionId, sectionsTimeData[sectionId].totalTimeSpent / 1000); // Convert to seconds
+          alert("To jest przykładowy komunikat!");
+        });
+      });
+    });
     </script>
-    -->
+
 
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -70,8 +140,8 @@ header("Content-Security-Policy: $cspWithNonce");
 
   <body>
     <!-- Google Tag Manager (noscript) -->
-      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZNTG6D7"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZNTG6D7"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- ======= Nagłówek ======= -->
@@ -123,7 +193,7 @@ header("Content-Security-Policy: $cspWithNonce");
     <!-- Koniec nagłówka -->
 
     <!-- ======= Sekcja Hero ======= -->
-    <section id="hero" class="d-flex align-items-center justify-content-center">
+    <section id="hero" class="d-flex align-items-center justify-content-center track-section">
       <div class="container" itemscope itemtype="https://schema.org/Service">
         <div class="row">
           <div class="col-12">
@@ -184,7 +254,7 @@ header("Content-Security-Policy: $cspWithNonce");
     <main id="main">
 
       <!-- ======= Sekcja O nas ======= -->
-      <section id="about" class="about" itemscope itemtype="https://schema.org/Organization">
+      <section id="about" class="about track-section" itemscope itemtype="https://schema.org/Organization">
         <div class="container" data-aos="fade-up">
           <div class="row">
             <div class="section-title">
@@ -213,7 +283,7 @@ header("Content-Security-Policy: $cspWithNonce");
       <!-- Koniec sekcji O nas -->
 
       <!-- ======= Sekcja Funkcje ======= -->
-      <section id="features" class="features">
+      <section id="features" class="features track-section">
         <div class="container" data-aos="fade-up">
           <div class="row">
             <div class="image col-lg-6" data-aos="fade-right">
@@ -265,7 +335,7 @@ header("Content-Security-Policy: $cspWithNonce");
       <!-- Koniec sekcji Funkcje -->
 
       <!-- ======= Sekcja Portfolio ======= -->
-      <section id="portfolio" class="portfolio">
+      <section id="portfolio" class="portfolio track-section">
         <div class="container" data-aos="fade-up">
           <div class="section-title">
             <h2>Portfolio</h2>
@@ -550,7 +620,7 @@ header("Content-Security-Policy: $cspWithNonce");
       <!-- Koniec sekcji Portfolio -->
 
       <!-- ======= Sekcja cennik ======= -->
-      <section id="services" class="services">
+      <section id="services" class="services track-section">
         <div class="container" data-aos="fade-up">
           <div class="section-title">
             <h2>Fotografia produktowa cennik</h2>
@@ -615,7 +685,7 @@ header("Content-Security-Policy: $cspWithNonce");
       <!-- Koniec sekcji Usługi -->
 
       <!-- ======= Sekcja Usługi ======= -->
-      <section id="services2" class="services">
+      <section id="services2" class="services track-section">
         <div class="container" data-aos="fade-up">
           <div class="section-title">
             <h2>Usługi</h2>
@@ -638,7 +708,7 @@ header("Content-Security-Policy: $cspWithNonce");
       <!-- Koniec sekcji Usługi -->
 
       <!-- ======= Sekcja Zespół ======= -->
-      <section id="team" class="team">
+      <section id="team" class="team track-section">
         <div class="container" data-aos="fade-up">
           <div class="section-title">
             <h2>Zespół</h2>
@@ -726,7 +796,7 @@ header("Content-Security-Policy: $cspWithNonce");
       <!-- Koniec sekcji Zespół -->
 
       <!-- ======= Counts Section ======= -->
-      <section id="counts" class="counts">
+      <section id="counts" class="counts track-section">
         <div class="container" data-aos="fade-up">
           <div class="row">
             <div class="section-title">
@@ -786,7 +856,7 @@ header("Content-Security-Policy: $cspWithNonce");
       <!-- End Counts Section -->
 
       <!-- ======= Contact Section ======= -->
-      <section id="contact" class="contact">
+      <section id="contact" class="contact track-section">
         <div class="container" data-aos="fade-up">
           <div class="row">
             <div class="section-title">

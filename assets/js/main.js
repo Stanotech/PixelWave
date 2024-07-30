@@ -6,21 +6,16 @@
 * License: https://bootstrapmade.com/license/
 */
 (function () {
-  console.log('DOMContentLoaded event fired1');
   document.addEventListener('DOMContentLoaded', function () {
-    console.log('DOMContentLoaded event fired');
-
     var checkIframe = setInterval(function () {
       var iframe = document.querySelector('iframe#illow-banner-widget');
       if (iframe) {
-        console.log('Iframe found:', iframe);
         clearInterval(checkIframe); // Zatrzymaj sprawdzanie, gdy `iframe` jest znaleziony
 
         // Tutaj dodaj resztę swojego skryptu
         var observer = new MutationObserver(function (mutations) {
           mutations.forEach(function (mutation) {
             if (mutation.attributeName === 'style') {
-              console.log('Style attribute changed:', iframe.style.cssText);
               checkAndHideIframe(iframe);
             }
           });
@@ -31,23 +26,17 @@
         };
 
         observer.observe(iframe, config);
-        console.log('Observer started');
         checkAndHideIframe(iframe); // Początkowe sprawdzenie
 
-      } else {
-        console.log('Iframe not found yet');
       }
     }, 500); // Sprawdzaj co 500 ms
   });
 
   function checkAndHideIframe(iframe) {
-    console.log('Checking iframe:', iframe); // Logujemy, który iframe jest sprawdzany
     var style = iframe.style;
     if (style.height === '60px' && style.width === '60px') {
-      console.log('Hiding iframe'); // Logujemy, kiedy iframe jest ukrywany
       iframe.style.display = 'none'; // Ukryj iframe
     } else {
-      console.log('Showing iframe'); // Logujemy, kiedy iframe jest pokazywany
       iframe.style.display = ''; // Pokaż iframe
     }
   }
