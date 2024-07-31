@@ -83,7 +83,7 @@ header("Content-Security-Policy: $cspWithNonce");
               sectionsTimeData[sectionId].totalTimeSpent += timeSpent;
               sectionsTimeData[sectionId].startTime = 0;
             }
-            console.log("opuściłeś!", sectionId, "czas", sectionsTimeData[sectionId].totalTimeSpent);
+            console.log("opuściłeś!", sectionId, "czas", (sectionsTimeData[sectionId].totalTimeSpent)/1000 );
           }
         });
       }, {
@@ -104,7 +104,7 @@ header("Content-Security-Policy: $cspWithNonce");
             sectionsTimeData[sectionId].totalTimeSpent += timeSpent;
           }
           console.log(sectionsTimeData[sectionId].totalTimeSpent / 1000);
-          sendEventToAnalytics('czas_spędzony_na_sekcji', sectionId, sectionsTimeData[sectionId].totalTimeSpent / 1000); // Convert to seconds
+          sendEventToAnalytics('czas_spędzony_na_sekcji', sectionId, (sectionsTimeData[sectionId].totalTimeSpent) / 1000); // Convert to seconds
           alert("To jest przykładowy komunikat!");
         });
       });
