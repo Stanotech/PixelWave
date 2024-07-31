@@ -19,14 +19,14 @@ header("Content-Security-Policy: $cspWithNonce");
   <head>
 
     <!-- Google Tag Manager -->
-<!-- 
+ 
     <script nonce="<?= htmlspecialchars($nonce, ENT_QUOTES, 'UTF-8') ?>">
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-TZNTG6D7');
-    </script> -->
+    </script> 
 
     <!-- End Google Tag Manager -->
 
@@ -66,14 +66,12 @@ header("Content-Security-Policy: $cspWithNonce");
 
       sections.forEach(section => {
         sectionsTimeData[section.id] = { startTime: 0, totalTimeSpent: 0 };
-        console.log(sectionsTimeData[section.id]);
       });
     
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           const sectionId = entry.target.id;
           if (entry.isIntersecting) {
-            console.log("weszłeś!", sectionId);
             sectionsTimeData[sectionId].startTime = new Date().getTime();
           } else {
             const startTime = sectionsTimeData[sectionId].startTime;
@@ -83,7 +81,6 @@ header("Content-Security-Policy: $cspWithNonce");
               sectionsTimeData[sectionId].totalTimeSpent += timeSpent;
               sectionsTimeData[sectionId].startTime = 0;
             }
-            console.log("opuściłeś!", sectionId, "czas", (sectionsTimeData[sectionId].totalTimeSpent)/1000 );
           }
         });
       }, {
@@ -103,9 +100,7 @@ header("Content-Security-Policy: $cspWithNonce");
             const timeSpent = endTime - startTime;
             sectionsTimeData[sectionId].totalTimeSpent += timeSpent;
           }
-          console.log(sectionsTimeData[sectionId].totalTimeSpent / 1000);
-          sendEventToAnalytics('czas_spędzony_na_sekcji', sectionId, (sectionsTimeData[sectionId].totalTimeSpent) / 1000); // Convert to seconds
-          alert("To jest przykładowy komunikat!");
+          sendEventToAnalytics('time_spend_on_section', sectionId, (sectionsTimeData[sectionId].totalTimeSpent) / 1000); // Convert to seconds
         });
       });
     });
@@ -140,8 +135,8 @@ header("Content-Security-Policy: $cspWithNonce");
 
   <body>
     <!-- Google Tag Manager (noscript) -->
-      <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZNTG6D7"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZNTG6D7"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> 
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- ======= Nagłówek ======= -->
