@@ -418,15 +418,6 @@ header("Content-Security-Policy: $cspWithNonce");
                       </a>
                     </div>
                   </div>
-
-                  <div class="swiper-slide">
-                    <div class="portfolio-wrap">
-                      <a href="assets/img/portfolio/aranz/aranz_zarowka.webp" data-gallery="portfolioGallery" class="portfolio-lightbox">
-                        <img src="assets/img/portfolio/aranz/aranz_zarowka.webp" class="img-fluid" alt="Żarówka w aranżu ogrodu" loading="lazy" />
-                        <div class="portfolio-info"></div>
-                      </a>
-                    </div>
-                  </div>
                 </div>
                 <div class="swiper-pagination"></div>
               </div>
