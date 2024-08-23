@@ -7,7 +7,7 @@ function generateNonce() {
 // nonce generation fof csp header
 $nonce = generateNonce();
 
-$cspFromHtaccess = "default-src 'self' https://unpkg.com/ https://www.google.com https://fonts.googleapis.com https://fonts.gstatic.com data: blob: https://va.tawk.to wss://vsa111.tawk.to https://www.googletagmanager.com/ https://*.tawk.to/ https://*.jsdelivr.net/; media-src https://*.tawk.to/; style-src 'self' https://platform.illow.io/ https://www.googletagmanager.com/ https://unpkg.com/ https://fonts.googleapis.com https://embed.tawk.to https://*.jsdelivr.net/ 'unsafe-inline'; font-src 'self' https://platform.illow.io/ https://*.jsdelivr.net/ https://fonts.gstatic.com https://*.tawk.to/ 'unsafe-inline' data:; img-src https://fonts.gstatic.com/ https://www.googletagmanager.com/ https://unpkg.com/ https://*.jsdelivr.net/ https://*.tawk.to/ https://*.tile.openstreetmap.org/ 'self' data:; connect-src 'self' https://www.google.com/ https://api.platform.illow.io/ https://platform.illow.io/ https://region1.google-analytics.com/ wss://vsa92.tawk.to/ https://vsa111.tawk.to https://vsa59.tawk.to wss://*.tawk.to https://*.tawk.to; frame-src https://www.googletagmanager.com/;";
+$cspFromHtaccess = "default-src 'self' https://unpkg.com/ https://www.google.com https://fonts.googleapis.com https://fonts.gstatic.com data: blob: https://va.tawk.to wss://vsa111.tawk.to https://www.googletagmanager.com/ https://*.tawk.to/ https://*.jsdelivr.net/; media-src https://*.tawk.to/; style-src 'self' https://platform.illow.io/ https://www.googletagmanager.com/ https://unpkg.com/ https://fonts.googleapis.com https://embed.tawk.to https://*.jsdelivr.net/ 'unsafe-inline'; font-src 'self' https://platform.illow.io/ https://*.jsdelivr.net/ https://fonts.gstatic.com https://*.tawk.to/ 'unsafe-inline' data:; img-src https://fonts.gstatic.com/ https://www.googletagmanager.com/ https://unpkg.com/ https://*.jsdelivr.net/ https://*.tawk.to/ https://*.tile.openstreetmap.org/ 'self' data:; connect-src 'self' https://googleads.g.doubleclick.net/ https://www.google.com/ https://api.platform.illow.io/ https://platform.illow.io/ https://region1.google-analytics.com/ wss://vsa92.tawk.to/ https://vsa111.tawk.to https://vsa59.tawk.to wss://*.tawk.to https://*.tawk.to; frame-src https://www.googletagmanager.com/;";
 $scriptSrc = "'self' https://*.jsdelivr.net/ https://unpkg.com/ https://googletagmanager.com/ https://www.googletagmanager.com/ https://embed.tawk.to/ 'unsafe-eval' 'nonce-$nonce' ";
 $cspWithNonce = $cspFromHtaccess . " script-src $scriptSrc;";
 $cspWithNonce = str_replace(array("\r", "\n"), '', $cspWithNonce);
@@ -126,7 +126,7 @@ header("Content-Security-Policy: $cspWithNonce");
     <meta property="og:image" content="https://www.pixelum.pl/assets/img/hero-bg.webp">
     <meta property="og:url" content="https://www.pixelum.pl">
     <meta property="og:description" content="Studio fotograficzne Pixelum - wyjątkowe sesje zdjęciowe dla twoich produktów, szybka i profesjonalna współpraca">
-    <link rel="canonical" href="https://pixelum.pl/index.html">
+    <link rel="canonical" href="https://pixelum.pl/index.php">
     
     <!-- inject:css -->
     <!-- endinject:css -->
