@@ -43,15 +43,17 @@
 
   "use strict";
 
-  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-  (function () {
-    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-    s1.async = true;
-    s1.src = 'https://embed.tawk.to/662c9ab1a0c6737bd1315f1b/1hsf3oi4e';
-    s1.charset = 'UTF-8';
-    s1.setAttribute('crossorigin', '*');
-    s0.parentNode.insertBefore(s1, s0);
-  })();
+  // CHAT TAWK TO
+
+  // var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  // (function () {
+  //   var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+  //   s1.async = true;
+  //   s1.src = 'https://embed.tawk.to/662c9ab1a0c6737bd1315f1b/1hsf3oi4e';
+  //   s1.charset = 'UTF-8';
+  //   s1.setAttribute('crossorigin', '*');
+  //   s0.parentNode.insertBefore(s1, s0);
+  // })();
 
   /**
    * Easy selector helper function
@@ -425,50 +427,50 @@
    */
 
 
-  document.addEventListener('DOMContentLoaded', function () {
-    var map = L.map('map').setView([52.4148991, 16.8972298], 15);
+  // document.addEventListener('DOMContentLoaded', function () {
+  //   var map = L.map('map').setView([52.4148991, 16.8972298], 15);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+  //   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  //   }).addTo(map);
 
-    L.marker([52.4148991, 16.8972298]).addTo(map)
-      .bindPopup('Siedziba firmy')
-      .openPopup();
-    /**
-     * schema.org
-     */
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.innerHTML = `
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Pixelum",
-        "url": "https://www.pixelum.pl",
-        "logo": "https://www.pixelum.pl/assets/img/logo.png",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+48 604216600",
-          "contactType": "Customer Service",
-          "email": "office@pixelum.pl"
-        },
-        "sameAs": [
-          "https://www.facebook.com/people/Pixelum/61558395214915/",
-          "https://www.linkedin.com/company/pixelum-studio"
-        ],
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Dabrowskiego 89/183",
-          "addressLocality": "Poznań",
-          "postalCode": "60-574",
-          "addressCountry": "Polska"
-        }
-      }
-    `;
-    document.head.appendChild(script);
+  //   L.marker([52.4148991, 16.8972298]).addTo(map)
+  //     .bindPopup('Siedziba firmy')
+  //     .openPopup();
+  //   /**
+  //    * schema.org
+  //    */
+  //   const script = document.createElement('script');
+  //   script.type = 'application/ld+json';
+  //   script.innerHTML = `
+  //     {
+  //       "@context": "https://schema.org",
+  //       "@type": "Organization",
+  //       "name": "Pixelum",
+  //       "url": "https://www.pixelum.pl",
+  //       "logo": "https://www.pixelum.pl/assets/img/logo.png",
+  //       "contactPoint": {
+  //         "@type": "ContactPoint",
+  //         "telephone": "+48 604216600",
+  //         "contactType": "Customer Service",
+  //         "email": "office@pixelum.pl"
+  //       },
+  //       "sameAs": [
+  //         "https://www.facebook.com/people/Pixelum/61558395214915/",
+  //         "https://www.linkedin.com/company/pixelum-studio"
+  //       ],
+  //       "address": {
+  //         "@type": "PostalAddress",
+  //         "streetAddress": "Dabrowskiego 89/183",
+  //         "addressLocality": "Poznań",
+  //         "postalCode": "60-574",
+  //         "addressCountry": "Polska"
+  //       }
+  //     }
+  //   `;
+  //   document.head.appendChild(script);
 
-  });
+  // });
 
 
 })()

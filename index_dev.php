@@ -32,7 +32,7 @@ header("Content-Security-Policy: $cspWithNonce");
 
     <!-- Google tag (gtag.js) analitics-->
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DLNE5W9MZ7" nonce="<?= htmlspecialchars($nonce, ENT_QUOTES, 'UTF-8') ?>"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-DLNE5W9MZ7" nonce="<?= htmlspecialchars($nonce, ENT_QUOTES, 'UTF-8') ?>"></script>
     <script nonce="<?= htmlspecialchars($nonce, ENT_QUOTES, 'UTF-8') ?>">
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -104,7 +104,7 @@ header("Content-Security-Policy: $cspWithNonce");
         });
       });
     });
-    </script>
+    </script> -->
 
 
     <meta charset="utf-8" />
@@ -126,7 +126,7 @@ header("Content-Security-Policy: $cspWithNonce");
     <meta property="og:image" content="https://www.pixelum.pl/assets/img/hero-bg.webp">
     <meta property="og:url" content="https://www.pixelum.pl">
     <meta property="og:description" content="Studio fotograficzne Pixelum - wyjątkowe sesje zdjęciowe dla twoich produktów, szybka i profesjonalna współpraca">
-    <link rel="canonical" href="https://pixelum.pl/index.php">
+    <link rel="canonical" href="https://pixelum.pl">
     
     <!-- inject:css -->
     <!-- endinject:css -->
@@ -143,7 +143,7 @@ header("Content-Security-Policy: $cspWithNonce");
     <header id="header" class="fixed-top">
       <div class="container d-flex align-items-center justify-content-lg-between">
         <span class="logo me-sm-auto me-lg-0">
-          <a href="/index.html">Pixelum<span>.</span></a>
+          <a href="/index.php">Pixelum<span>.</span></a>
         </span>
 
         <div class="mx-2 fs-6">
@@ -893,13 +893,6 @@ header("Content-Security-Policy: $cspWithNonce");
                         +48 604216600
                       </a>
                     </h2>
-                    <!-- 
-                    <h2>
-                      <a href="tel:+48608732459" class="h3">
-                        +48 608732459
-                      </a>
-                    </h2>
-                     -->
                   </div>
                 </address>
               </div>
@@ -968,6 +961,6 @@ header("Content-Security-Policy: $cspWithNonce");
 
     <!-- inject:js -->
     <!-- endinject:js -->
-    <script nonce="<?= htmlspecialchars($nonce, ENT_QUOTES, 'UTF-8') ?>" src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- <script nonce="<?= htmlspecialchars($nonce, ENT_QUOTES, 'UTF-8') ?>" src="https://unpkg.com/leaflet/dist/leaflet.js"></script> -->
   </body>
 </html>
